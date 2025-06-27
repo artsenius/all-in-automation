@@ -1,0 +1,1 @@
+export const profileImage = '[data-testid="profile-image"]'; 
