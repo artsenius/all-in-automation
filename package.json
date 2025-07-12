@@ -1,18 +1,46 @@
 {
   "name": "all-in-automation",
   "version": "1.0.0",
-  "description": "",
+  "description": "Comprehensive testing suite for Arthur Senko's About Me page",
   "main": "index.js",
   "scripts": {
     "test:wdio": "FRAMEWORK=wdio wdio run ./wdio.conf.js",
-    "test:playwright": "FRAMEWORK=playwright playwright test"
+    "test:playwright": "FRAMEWORK=playwright playwright test",
+    "test:about-me": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js",
+    "test:performance": "FRAMEWORK=playwright playwright test --grep \"Performance Excellence\"",
+    "test:accessibility": "FRAMEWORK=playwright playwright test --grep \"Accessibility Compliance\"",
+    "test:seo": "FRAMEWORK=playwright playwright test --grep \"SEO Optimization\"",
+    "test:responsive": "FRAMEWORK=playwright playwright test --grep \"Responsive Design\"",
+    "test:security": "FRAMEWORK=playwright playwright test --grep \"Security\"",
+    "test:mobile": "FRAMEWORK=playwright playwright test --project=\"mobile-chrome\" --project=\"mobile-safari\"",
+    "test:desktop": "FRAMEWORK=playwright playwright test --project=\"chromium-desktop\" --project=\"firefox-desktop\" --project=\"webkit-desktop\"",
+    "test:cross-browser": "FRAMEWORK=playwright playwright test --project=\"chromium-desktop\" --project=\"firefox-desktop\" --project=\"webkit-desktop\"",
+    "test:visual": "FRAMEWORK=playwright playwright test --grep \"Visual Consistency\"",
+    "test:headed": "FRAMEWORK=playwright playwright test --headed",
+    "test:debug": "FRAMEWORK=playwright playwright test --debug",
+    "report:html": "playwright show-report test-results/html-report",
+    "report:open": "open test-results/html-report/index.html",
+    "clean:reports": "rm -rf test-results screenshots visual-baselines",
+    "setup:playwright": "npx playwright install",
+    "setup": "npm install && npm run setup:playwright",
+    "lint:tests": "eslint tests/**/*.js",
+    "format:tests": "prettier --write tests/**/*.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/artsenius/all-in-automation.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "testing",
+    "automation",
+    "playwright",
+    "webdriverio",
+    "accessibility",
+    "performance",
+    "seo",
+    "about-me"
+  ],
+  "author": "Arthur Senko",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
@@ -29,6 +57,21 @@
     "appium": "^2.19.0",
     "dotenv": "^16.6.0",
     "playwright": "^1.53.1",
-    "webdriverio": "^9.16.2"
-  }
+    "webdriverio": "^9.16.2",
+    "allure-playwright": "^3.0.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "axe-core": "^4.8.0",
+    "lighthouse": "^11.4.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ]
 }
