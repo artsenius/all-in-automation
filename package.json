@@ -1,20 +1,61 @@
 {
   "name": "all-in-automation",
   "version": "1.0.0",
-  "description": "",
+  "description": "Next-generation testing suite for comprehensive web application quality assurance",
   "main": "index.js",
   "scripts": {
     "test:wdio": "FRAMEWORK=wdio wdio run ./wdio.conf.js",
-    "test:playwright": "FRAMEWORK=playwright playwright test"
+    "test:playwright": "FRAMEWORK=playwright playwright test",
+    "test:about-me": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js",
+    "test:about-me:wdio": "FRAMEWORK=wdio wdio run ./wdio.conf.js --spec tests/specs/aboutMe.spec.js",
+    "test:performance": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --grep \"Advanced Performance Testing\"",
+    "test:accessibility": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --grep \"Accessibility Testing\"",
+    "test:security": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --grep \"Security.*Testing\"",
+    "test:seo": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --grep \"SEO.*Testing\"",
+    "test:ai": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --grep \"AI-Powered Testing\"",
+    "test:sustainability": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --grep \"Sustainability.*Testing\"",
+    "test:responsive": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --grep \"responsive\"",
+    "test:pwa": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --grep \"Progressive Web App\"",
+    "test:chromium": "FRAMEWORK=playwright playwright test --project=chromium tests/specs/aboutMe.spec.js",
+    "test:firefox": "FRAMEWORK=playwright playwright test --project=firefox tests/specs/aboutMe.spec.js",
+    "test:webkit": "FRAMEWORK=playwright playwright test --project=webkit tests/specs/aboutMe.spec.js",
+    "test:mobile": "FRAMEWORK=playwright playwright test --project=mobile-chrome tests/specs/aboutMe.spec.js",
+    "test:cross-browser": "FRAMEWORK=playwright playwright test --project=chromium --project=firefox --project=webkit tests/specs/aboutMe.spec.js",
+    "test:comprehensive": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --grep \"Comprehensive Integration\"",
+    "test:report": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --reporter=html",
+    "test:debug": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --debug",
+    "test:headed": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --headed",
+    "test:trace": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --trace on",
+    "test:parallel": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --workers=4",
+    "test:ci": "FRAMEWORK=playwright playwright test tests/specs/aboutMe.spec.js --reporter=json --reporter=junit",
+    "lint": "eslint tests/ --ext .js",
+    "lint:fix": "eslint tests/ --ext .js --fix",
+    "format": "prettier --write tests/**/*.js",
+    "format:check": "prettier --check tests/**/*.js",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/artsenius/all-in-automation.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "testing",
+    "automation",
+    "playwright",
+    "webdriverio",
+    "performance",
+    "accessibility",
+    "security",
+    "seo",
+    "ai-testing",
+    "sustainability",
+    "web-vitals",
+    "quality-assurance"
+  ],
+  "author": "Arthur Senko",
+  "license": "MIT",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/artsenius/all-in-automation/issues"
   },
@@ -26,9 +67,69 @@
     "@wdio/local-runner": "^9.16.2",
     "@wdio/mocha-framework": "^9.16.2",
     "@wdio/spec-reporter": "^9.16.2",
+    "@wdio/junit-reporter": "^9.16.2",
+    "@wdio/json-reporter": "^9.16.2",
+    "@wdio/allure-reporter": "^9.16.2",
     "appium": "^2.19.0",
     "dotenv": "^16.6.0",
-    "playwright": "^1.53.1",
-    "webdriverio": "^9.16.2"
+    "axe-core": "^4.10.2",
+    "axe-playwright": "^2.0.3",
+    "lighthouse": "^12.0.0",
+    "puppeteer-core": "^23.0.0",
+    "web-vitals": "^4.2.4",
+    "pixelmatch": "^6.0.0",
+    "resemblejs": "^5.0.0",
+    "sharp": "^0.33.5",
+    "@tensorflow/tfjs": "^4.22.0",
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "natural": "^8.0.1",
+    "compromise": "^14.14.0",
+    "sentiment": "^5.0.2",
+    "readability": "^0.1.1",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-playwright": "^2.1.0",
+    "prettier": "^3.4.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
+    "allure-playwright": "^3.0.3",
+    "allure-commandline": "^2.32.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^6.0.1",
+    "fs-extra": "^11.2.0",
+    "node-fetch": "^3.3.2",
+    "chalk": "^5.3.0",
+    "ora": "^8.1.1",
+    "inquirer": "^12.1.0",
+    "csv-parser": "^3.0.0",
+    "json2csv": "^6.1.0",
+    "moment": "^2.30.1",
+    "lodash": "^4.17.21",
+    "uuid": "^11.0.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "lint-staged": {
+    "tests/**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test:about-me"
+    }
+  },
+  "config": {
+    "playwright": {
+      "browsers": ["chromium", "firefox", "webkit"]
+    }
   }
 }
